@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Menu</title>
+
+    <style>
+
+        body{
+            margin:0;
+            padding:0;
+            font-family:Arial, sans-serif;
+            background-image:url("{{ url_for('static', filename='saffron1.png') }}");
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
+        }
+
+        h1{
+            text-align:center;
+            color:white;
+            background:rgba(0,0,0,0.5);
+            padding:20px;
+            margin:0;
+        }
+
+        .container{
+            display:flex;
+            justify-content:center;
+            gap:100px;
+            margin-top:50px;
+            flex-wrap:wrap;
+        }
+
+        .box{
+            background:white;
+            padding:20px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0px 0px 10px gray;
+        }
+
+        .box img{
+            width:250px;
+            height:250px;
+            border-radius:15px;
+            object-fit:cover;
+        }
+
+        button{
+            background-color:orange;
+            color:white;
+            border:none;
+            padding:12px 25px;
+            font-size:18px;
+            border-radius:10px;
+            cursor:pointer;
+            margin-top:10px;
+        }
+
+        button:hover{
+            background-color:red;
+        }
+
+        .title{
+            text-align:center;
+            color:white;
+            background:rgba(0,0,0,0.5);
+            padding:15px;
+            margin-top:50px;
+        }
+
+        .category-container{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:40px;
+            padding:30px;
+        }
+
+        .card{
+            width:300px;
+            background:white;
+            border-radius:20px;
+            text-align:center;
+            padding:20px;
+            box-shadow:0px 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .card img{
+            width:250px;
+            height:250px;
+            border-radius:15px;
+            object-fit:cover;
+        }
+
+        .card a{
+            display:inline-block;
+            margin-top:20px;
+            padding:12px 30px;
+            background:#f9a602;
+            color:white;
+            text-decoration:none;
+            border-radius:10px;
+            font-size:20px;
+        }
+
+        .card a:hover{
+            background:green;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>Select Your Menu</h1>
+
+    <div class="container">
+
+        <div class="box">
+
+            <img src="{{ url_for('static', filename='vegs.png') }}">
+
+            <br><br>
+
+            <a href="{{ url_for('vegmenu') }}">
+                <button>Veg Menu</button>
+            </a>
+
+        </div>
+
+        <div class="box">
+
+            <img src="{{ url_for('static', filename='non-vegs.png') }}">
+
+            <br><br>
+
+            <a href="{{ url_for('nonvegmenu') }}">
+                <button>Non Veg Menu</button>
+            </a>
+
+        </div>
+
+    </div>
+
+    <h1 class="title">Food Categories</h1>
+
+<div class="category-container">
+
+    {% for c in categories %}
+
+    <div class="card">
+
+        <img src="{{ url_for('static', filename=c[2]) }}">
+
+        <a href="{{ url_for('category_food', id=c[0]) }}">
+            {{ c[1] }}
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

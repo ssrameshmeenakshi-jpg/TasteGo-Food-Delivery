@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+
+    <style>
+
+        body{
+            background-image:url("{{ url_for('static', filename='saffron1.png') }}");
+            background-size:cover;
+            background-repeat:no-repeat;
+            background-position:center;
+            height:100vh;
+            margin:0;
+            font-family:Arial, sans-serif;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .login-box{
+            background:rgba(0,0,0,0.7);
+            padding:40px;
+            border-radius:15px;
+            color:white;
+            text-align:center;
+            width:350px;
+        }
+
+        input{
+            width:90%;
+            padding:12px;
+            margin-top:10px;
+            border:none;
+            border-radius:8px;
+        }
+
+        input[type="submit"]{
+            background:orange;
+            color:white;
+            font-size:18px;
+            cursor:pointer;
+        }
+
+        input[type="submit"]:hover{
+            background:red;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <h1>Login Page</h1>
+
+        <form method="POST">
+
+            <input type="text" name="uname" placeholder="Enter Username" required>
+
+            <br><br>
+
+            <input type="password" name="upass" placeholder="Enter Password" required>
+
+            <br><br>
+
+            <input type="submit" value="Login">
+
+        </form>
+
+
+    </div>
+
+</body>
+</html>

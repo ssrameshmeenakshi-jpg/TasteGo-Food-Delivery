@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Foods</title>
+
+   <style>
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+
+        background-image: url("{{ url_for('static', filename=foods[0][7]) }}");
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    h1 {
+        text-align: center;
+        color: white;
+        padding: 20px;
+    }
+
+    .food-box {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid black;
+        padding: 20px;
+        margin: 20px auto;
+        width: 300px;
+        border-radius: 10px;
+    }
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Food Items</h1>
+
+{% for food in foods %}
+
+<div class="food-box">
+
+    <img src="{{ url_for('static', filename=food[6]) }}"
+         width="200">
+
+    <h2>{{ food[1] }}</h2>
+
+    <p>Price: ₹{{ food[3] }}</p>
+
+    <p>Discount: {{ food[4] }}%</p>
+
+    <p>{{ food[5] }}</p>
+
+</div>
+
+{% endfor %}
+
+</body>
+</html>

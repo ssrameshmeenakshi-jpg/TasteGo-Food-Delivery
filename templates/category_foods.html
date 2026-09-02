@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Foods</title>
+</head>
+<body>
+
+<h1>Food Items</h1>
+
+{% for food in foods %}
+
+<div style="border:1px solid black; padding:20px; margin:20px; width:300px;">
+
+    <img src="{{ url_for('static', filename=food[6]) }}"
+         width="200">
+
+    <h2>{{ food[1] }}</h2>
+
+    <p>Price: ₹{{ food[3] }}</p>
+
+    <p>Discount: {{ food[4] }}%</p>
+
+    <p>{{ food[5] }}</p>
+
+</div>
+
+{% endfor %}
+
+</body>
+</html>

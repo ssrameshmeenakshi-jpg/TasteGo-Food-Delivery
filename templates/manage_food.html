@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Foods</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            padding:30px;
+        }
+
+        h1{
+            text-align:center;
+        }
+
+        form{
+            width:500px;
+            margin:auto;
+            border:1px solid gray;
+            padding:20px;
+            border-radius:10px;
+        }
+
+        input,
+        select,
+        textarea{
+            width:100%;
+            padding:10px;
+            margin-top:5px;
+        }
+
+        button{
+            background:green;
+            color:white;
+            border:none;
+            padding:10px 20px;
+            cursor:pointer;
+        }
+
+        table{
+            width:100%;
+            margin-top:30px;
+            border-collapse:collapse;
+        }
+
+        table,th,td{
+            border:1px solid black;
+        }
+
+        th,td{
+            padding:10px;
+            text-align:center;
+        }
+
+        img{
+            border-radius:10px;
+        }
+
+        .delete{
+            color:red;
+            text-decoration:none;
+            font-weight:bold;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<h1>Manage Foods</h1>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <input
+        type="text"
+        name="food"
+        placeholder="Food Name"
+        required>
+
+    <br><br>
+
+    <input
+        type="number"
+        name="price"
+        placeholder="Price"
+        required>
+
+    <br><br>
+
+    <select name="category_id">
+
+        <option value="">
+            Select Category
+        </option>
+
+        {% for c in categories %}
+
+        <option value="{{ c[0] }}">
+            {{ c[1] }}
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+    <!-- Veg / Non Veg -->
+
+    <select name="food_type">
+
+        <option value="">
+            Select Food Type
+        </option>
+
+        <option value="Veg">
+            Veg
+        </option>
+
+        <option value="Non Veg">
+            Non Veg
+        </option>
+
+    </select>
+
+    <br><br>
+
+    <input
+        type="number"
+        name="discount"
+        placeholder="Discount %">
+
+    <br><br>
+
+    <textarea
+        name="description"
+        placeholder="Description">
+    </textarea>
+
+    <br><br>
+
+    <input
+        type="file"
+        name="food_image"
+        required>
+
+    <br><br>
+
+    <button type="submit">
+        Add Food
+    </button>
+
+</form>
+
+<hr>
+
+<h2>Food Items</h2>
+
+<table>
+
+<tr>
+    <th>ID</th>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Category ID</th>
+    <th>Food Type</th>
+    <th>Price</th>
+    <th>Discount</th>
+    <th>Action</th>
+</tr>
+
+{% for food in foods %}
+
+<tr>
+
+    <td>{{ food[0] }}</td>
+
+    <td>
+        <img
+            src="{{ url_for('static', filename=food[7]) }}"
+            width="80"
+            height="80">
+    </td>
+
+    <td>{{ food[1] }}</td>
+
+    <td>{{ food[2] }}</td>
+
+    <td>{{ food[3] }}</td>
+
+    <td>₹{{ food[4] }}</td>
+
+    <td>{{ food[5] }}%</td>
+
+    <td>
+        <a
+            class="delete"
+            href="{{ url_for('delete_food', id=food[0]) }}">
+            Delete
+        </a>
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

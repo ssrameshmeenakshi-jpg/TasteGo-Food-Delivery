@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Orders</title>
+</head>
+<body>
+
+<h1>Orders</h1>
+
+<table border="1">
+
+<tr>
+    <th>ID</th>
+    <th>User</th>
+    <th>Food</th>
+    <th>Quantity</th>
+</tr>
+
+{% for order in orders %}
+
+<tr>
+    <td>{{ order[0] }}</td>
+    <td>{{ order[1] }}</td>
+    <td>{{ order[2] }}</td>
+    <td>{{ order[3] }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>
