@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Order</title>
+</head>
+
+<body>
+
+<h1>Food Order</h1>
+
+<img src="{{ url_for('static', filename=food[7]) }}" width="250">
+
+<h2>{{ food[1] }}</h2>
+
+<h3>Price : ₹<span id="price">{{ food[4] }}</span></h3>
+
+<form>
+
+    <input type="text" placeholder="Enter Your Name:">
+
+    <br><br>
+
+    <textarea placeholder="Enter your Address:"></textarea>
+
+    <br><br>
+
+    <input type="number" id="qty" value="1">
+
+    <br><br>
+
+    <button type="button" onclick="calculate()">
+        Calculate Amount
+    </button>
+
+</form>
+
+<h3 id="amount"></h3>
+
+<script>
+
+function calculate() {
+
+    let qty = parseInt(document.getElementById("qty").value);
+    let price = parseInt(document.getElementById("price").innerText);
+
+    let total = qty * price;
+
+    document.getElementById("amount").innerHTML =
+        "Total Amount : ₹" + total;
+}
+
+
+function goToPayment() {
+
+    let qty = parseInt(document.getElementById("qty").value);
+    let price = parseInt(document.getElementById("price").innerText);
+
+    let total = qty * price;
+
+    window.location.href = "/payment?amount=" + total;
+}
+
+</script>
+
+<button type="button" onclick="goToPayment()">
+    Proceed to Payment
+</button>
+
+</body>
+</html>

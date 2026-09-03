@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TasteGo - Payment</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+
+            background-image: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836");
+            background-size: cover;
+            background-position: center;
+
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .payment-box {
+            background: rgba(0, 0, 0, 0.85);
+
+            padding: 35px;
+
+            width: 400px;
+
+            border-radius: 20px;
+
+            text-align: center;
+
+            color: white;
+
+            box-shadow: 0px 0px 20px black;
+        }
+
+        h1 {
+            color: orange;
+        }
+
+        .amount {
+            font-size: 25px;
+            margin: 20px;
+            color: lightgreen;
+        }
+
+        input {
+            width: 90%;
+
+            padding: 12px;
+
+            margin: 10px 0;
+
+            border-radius: 8px;
+
+            border: none;
+
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 20px;
+
+            padding: 12px 30px;
+
+            background: orange;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 10px;
+
+            font-size: 18px;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: green;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="payment-box">
+
+    <h1>💳 Payment</h1>
+
+    <p class="amount">
+        Total Amount: ₹{{ amount }}
+    </p>
+
+    <form action="{{ url_for('confirm') }}" method="GET">
+
+        <input type="text"
+               placeholder="Card Holder Name"
+               required>
+
+        <input type="text"
+               placeholder="Card Number"
+               maxlength="16"
+               required>
+
+        <input type="text"
+               placeholder="MM/YY"
+               required>
+
+        <input type="password"
+               placeholder="CVV"
+               maxlength="3"
+               required>
+
+        <button type="submit">
+            Pay Now 💰
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
